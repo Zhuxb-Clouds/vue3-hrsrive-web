@@ -9,7 +9,7 @@ import { RollbackOutlined } from "@ant-design/icons-vue";
 import { useRouter } from "vue-router";
 const router = useRouter();
 const handleClick = () => {
-  router.back();
+  router.replace("/bug");
 };
 </script>
 

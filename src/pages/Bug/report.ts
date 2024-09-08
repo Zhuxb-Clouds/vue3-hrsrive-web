@@ -14,11 +14,14 @@ export interface BugRecord extends FormState {
   id: number;
 }
 
+// const baseUrl = 'http://localhost:3011'
+const baseUrl = 'https://report.zhuxb.cn'
+
 const auth = localStorage.getItem('auth') || ""
 
 export const report = (data: FormState) => {
   // Send data to server
-  return fetch('http://localhost:3011/bug', {
+  return fetch(`${baseUrl}/bug`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -33,7 +36,7 @@ export const getBugList = (payload: { emailList: string, page: number, amount: n
   page: 1,
   amount: 10
 }) => {
-  return fetch(`http://localhost:3011/bug?emailList=${payload.emailList}&page=${payload.page}&amount=${payload.amount}`, {
+  return fetch(`${baseUrl}/bug?emailList=${payload.emailList}&page=${payload.page}&amount=${payload.amount}`, {
     method: 'GET',
     headers: {
       'Authorization': auth
@@ -44,7 +47,7 @@ export const getBugList = (payload: { emailList: string, page: number, amount: n
 
 
 export const updateBug = (data: BugRecord) => {
-  return fetch(`http://localhost:3011/bug/${data.id}`, {
+  return fetch(`${baseUrl}/bug/${data.id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
