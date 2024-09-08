@@ -1,0 +1,41 @@
+/* 字体 */
+
+@font-face {
+  font-family: Smiley sans;
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/SmileySans-Oblique.ttf.woff2")
+    format("woff2");
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* 删除所有a标签的下划线 */
+a {
+  text-decoration: none;
+}
