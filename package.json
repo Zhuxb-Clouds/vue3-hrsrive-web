@@ -6,13 +6,15 @@
   "scripts": {
     "dev": "vite --port 3001 --mode development",
     "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy-dev": "vite build && node ./scripts/deploy.js"
   },
   "dependencies": {
     "@ant-design/icons-vue": "^7.0.1",
     "@vueuse/core": "^10.11.0",
     "ant-design-vue": "4.x",
     "date-fns": "^3.6.0",
+    "simple-git": "^3.26.0",
     "vue": "^3.4.29",
     "vue-router": "4"
   },
