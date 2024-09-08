@@ -20,6 +20,8 @@ jobs:
 
       - name: Create and push dist folder
         run: |
+          npm install
+          npm run build
           mkdir -p temp-deploy
           cp -r dist/* temp-deploy/
           cd temp-deploy
