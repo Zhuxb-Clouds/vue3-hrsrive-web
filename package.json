@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite --port 3001 --mode development",
     "build": "vite build",
+    "deploy-dev": "vite build --mode development && node ./scripts/deploy.js",
+    "deploy-prod": "vite build --mode production && node ./scripts/deploy.js",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -13,7 +15,9 @@
     "@vueuse/core": "^10.11.0",
     "ant-design-vue": "4.x",
     "date-fns": "^3.6.0",
+    "fs-extra": "^11.2.0",
     "simple-git": "^3.26.0",
+    "vite-plugin-compression": "^0.5.1",
     "vue": "^3.4.29",
     "vue-router": "4"
   },

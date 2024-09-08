@@ -2,7 +2,6 @@
   <div class="container">
     <div class="mask"></div>
     <div class="form-container">
-      
       <Back style="top: 0; left: -50px" />
       <h1>提交虫子</h1>
       <Form layout="vertical" ref="formRef" :model="formState" @finish="onCheck">
@@ -133,7 +132,7 @@ const onCheck = async () => {
   formRef.value.validateFields().then((res: FormState) => {
     localStorage.setItem("email", res.email);
     if (!emailList.value.includes(res.email)) {
-      emailList.value.push(res.email);
+      emailList.value = Array.from(new Set([...emailList.value, res.email]));
     }
     report(res).then(() => {
       message.success("提交成功，感谢您的反馈！");
@@ -185,6 +184,7 @@ onMounted(() => {
   z-index: 2;
   border-radius: 12px;
   position: relative;
+  font-family: Smiley sans;
 }
 .mask {
   position: absolute;
@@ -200,5 +200,11 @@ onMounted(() => {
   color: #999;
   text-align: center;
   margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .form-container {
+    width: 70%;
+  }
 }
 </style>

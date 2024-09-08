@@ -6,10 +6,10 @@
         <div class="card">
           <div class="title">捉虫</div>
           <section>
-            <p>○ 发现并提交错别字或语法错误。</p>
-            <p>○ 发现游戏中的错误漏洞。</p>
-            <p>○ 提交漏洞让我们来修复它们。</p>
-            <p>○ 为游戏提供更多的建议。</p>
+            <p>发现并提交错别字或语法错误。</p>
+            <p>发现游戏中的错误漏洞。</p>
+            <p>提交漏洞让我们来修复它们。</p>
+            <p>为游戏提供更多的建议。</p>
 
             <img src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/hrsrive/B1.png" alt="" />
           </section>
@@ -19,9 +19,9 @@
         <div class="card">
           <div class="title">查询记录</div>
           <section>
-            <p>○ 通过邮箱查询曾经捉过的虫子。</p>
-            <p>○ 查看自己的捉虫记录。</p>
-            <p class="delete">○ 查看自己的捉虫排名。</p>
+            <p>通过邮箱查询曾经捉过的虫子。</p>
+            <p>查看自己的捉虫记录。</p>
+            <p class="delete">查看自己的捉虫排名。</p>
 
             <img src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/hrsrive/A1.png" alt="" />
           </section>
@@ -106,6 +106,20 @@ onMounted(() => {
     font-weight: normal;
     /* 斜体 */
     font-style: italic;
+    margin-inline-start: 20px;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      left: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #000;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: #000 2px solid;
+    }
   }
   .delete {
     text-decoration: line-through;

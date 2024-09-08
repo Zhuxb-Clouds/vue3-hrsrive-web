@@ -13,6 +13,7 @@
             v-model:value="selectedEmail"
             mode="tags"
             style="max-width: 720px; min-width: 200px"
+            @change="init"
           />
         </FormItem>
       </Form>
@@ -52,17 +53,15 @@ const emailListOptions = computed(() =>
   emailList.value.map((item) => ({ label: item, value: item }))
 );
 const init = () => {
-  const emails = emailList.value.join(",");
-  if (emails) {
-    getBugList({
-      emailList: emails,
-      page: page.value,
-      amount: amount.value,
-    }).then((res) => {
-      data.value = res.data;
-      total.value = res.total;
-    });
-  }
+  const emails = selectedEmail.value.join(",");
+  getBugList({
+    emailList: emails,
+    page: page.value,
+    amount: amount.value,
+  }).then((res) => {
+    data.value = res.data;
+    total.value = res.total;
+  });
 };
 const data = ref([]);
 const total = ref(0);
@@ -104,7 +103,7 @@ const handleChange = (pageNumber: number, pageSize: number) => {
   init();
 };
 const handleAddMail = (value: string) => {
-  emailList.value.push(value);
+  emailList.value = Array.from(new Set([...emailList.value, value]));
   selectedEmail.value = [value];
   init();
 };
