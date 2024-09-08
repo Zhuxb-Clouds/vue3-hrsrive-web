@@ -29,6 +29,11 @@ const routes = [
     name: "Record",
     component: () => import('@/pages/Bug/Record.vue'),
   },
+  {
+    path: "/bug/handle",
+    name: "Handle",
+    component: () => import('@/pages/Bug/Handle.vue'),
+  },
   // 未命中的全部redirect到/
   {
     path: "/:pathMatch(.*)*",

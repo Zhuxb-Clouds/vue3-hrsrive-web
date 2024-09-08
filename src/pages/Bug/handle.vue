@@ -4,16 +4,8 @@
     <div class="table">
       <Back style="top: 0; left: -50px" />
       <Form layout="inline">
-        <FormItem label="输入其他邮箱查询">
+        <FormItem label="输入单个邮箱查询">
           <InputSearch type="email" placeholder="请输入邮箱" enter-button @search="handleAddMail" />
-        </FormItem>
-        <FormItem label="选择需要查询的邮箱">
-          <Select
-            :options="emailListOptions"
-            v-model:value="selectedEmail"
-            mode="tags"
-            style="max-width: 720px; min-width: 200px"
-          />
         </FormItem>
       </Form>
       <Table
@@ -33,40 +25,57 @@
             <Tag v-else-if="text == 'pending'" color="processing">未处理</Tag>
           </div>
         </template>
+        <!-- @vue-ignore -->
+        <template #action="{ record }">
+          <Button @click="handleClick(record)">操作</Button>
+        </template>
       </Table>
     </div>
   </div>
+  <Modal :data="currentItem" v-model="open" @changed="init" />
 </template>
 
 <script setup lang="ts">
-import { Table, TableColumnType, Tag, InputSearch, Select, FormItem, Form } from "ant-design-vue";
-import { onMounted, ref, computed } from "vue";
-import { getBugList } from "./report";
-import { useLocalStorage } from "@vueuse/core";
+import { Table, TableColumnType, Tag, InputSearch, Button, FormItem, Form } from "ant-design-vue";
+import { onMounted, ref } from "vue";
+import { getBugList, BugRecord } from "./report";
+import Modal from "./handleModal.vue";
 import Back from "@/components/back.vue";
-const emailList = useLocalStorage<string[]>("emailList", []);
-const selectedEmail = ref(emailList.value);
 const page = ref(1);
 const amount = ref(10);
-const emailListOptions = computed(() =>
-  emailList.value.map((item) => ({ label: item, value: item }))
-);
-const init = () => {
-  const emails = emailList.value.join(",");
-  if (emails) {
-    getBugList({
-      emailList: emails,
-      page: page.value,
-      amount: amount.value,
-    }).then((res) => {
-      data.value = res.data;
-      total.value = res.total;
-    });
-  }
+const open = ref(false);
+const currentItem = ref<BugRecord>({
+  id: 0,
+  email: "",
+  game: "",
+  version: "",
+  bugType: "",
+  line: "",
+  content: "",
+  status: "",
+  reply: "",
+});
+const init = (emailList?: string) => {
+  getBugList({
+    emailList: emailList || "",
+    page: page.value,
+    amount: amount.value,
+  }).then((res) => {
+    data.value = res.data;
+    total.value = res.total;
+  });
 };
 const data = ref([]);
 const total = ref(0);
 const columns: TableColumnType[] = [
+  {
+    title: "id",
+    dataIndex: "id",
+  },
+  {
+    title: "邮箱",
+    dataIndex: "email",
+  },
   {
     title: "游戏名称",
     dataIndex: "game",
@@ -97,6 +106,10 @@ const columns: TableColumnType[] = [
     dataIndex: "reply",
     ellipsis: true,
   },
+  {
+    title: "操作",
+    slots: { customRender: "action" },
+  },
 ];
 const handleChange = (pageNumber: number, pageSize: number) => {
   page.value = pageNumber;
@@ -104,13 +117,16 @@ const handleChange = (pageNumber: number, pageSize: number) => {
   init();
 };
 const handleAddMail = (value: string) => {
-  emailList.value.push(value);
-  selectedEmail.value = [value];
-  init();
+  page.value = 1;
+  init(value);
 };
 onMounted(async () => {
   init();
 });
+const handleClick = (record: BugRecord) => {
+  currentItem.value = record;
+  open.value = true;
+};
 </script>
 
 <style scoped lang="less">

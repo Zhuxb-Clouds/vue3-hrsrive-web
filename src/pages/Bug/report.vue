@@ -2,6 +2,8 @@
   <div class="container">
     <div class="mask"></div>
     <div class="form-container">
+      
+      <Back style="top: 0; left: -50px" />
       <h1>提交虫子</h1>
       <Form layout="vertical" ref="formRef" :model="formState" @finish="onCheck">
         <FormItem
@@ -112,6 +114,7 @@ import {
 import { useLocalStorage } from "@vueuse/core";
 import { useRoute, useRouter } from "vue-router";
 import { FormState, report } from "./report";
+import Back from "@/components/back.vue";
 const route = useRoute();
 const router = useRouter();
 const emailList = useLocalStorage<string[]>("emailList", []);
@@ -163,7 +166,7 @@ onMounted(() => {
 });
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .container {
   width: 100%;
   height: 100vh;
@@ -181,6 +184,7 @@ onMounted(() => {
   background-color: #fff;
   z-index: 2;
   border-radius: 12px;
+  position: relative;
 }
 .mask {
   position: absolute;
