@@ -16,6 +16,15 @@
             @change="init"
           />
         </FormItem>
+        <FormItem label="选择查询Bug的状态">
+          <Select
+            :options="statusOptions"
+            v-model:value="statusList"
+            mode="tags"
+            style="max-width: 720px; min-width: 200px"
+            @change="init"
+          />
+        </FormItem>
       </Form>
       <Table
         :columns="columns"
@@ -52,12 +61,18 @@ const amount = ref(10);
 const emailListOptions = computed(() =>
   emailList.value.map((item) => ({ label: item, value: item }))
 );
+const statusOptions = computed(() => [
+  { label: "已完成", value: "resolve" },
+  { label: "已拒绝", value: "reject" },
+  { label: "未处理", value: "pending" },
+]);
+const statusList = ref<string[]>([]);
 const init = () => {
-  const emails = selectedEmail.value.join(",");
   getBugList({
-    emailList: emails,
+    emailList: selectedEmail.value.join(","),
     page: page.value,
     amount: amount.value,
+    status: statusList.value.join(","),
   }).then((res) => {
     data.value = res.data;
     total.value = res.total;

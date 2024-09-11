@@ -7,6 +7,15 @@
         <FormItem label="输入单个邮箱查询">
           <InputSearch type="email" placeholder="请输入邮箱" enter-button @search="handleAddMail" />
         </FormItem>
+        <FormItem label="选择查询Bug的状态">
+          <Select
+            :options="statusOptions"
+            v-model:value="statusList"
+            mode="tags"
+            style="max-width: 720px; min-width: 200px"
+            @change="init()"
+          />
+        </FormItem>
       </Form>
       <Table
         :columns="columns"
@@ -36,9 +45,26 @@
 </template>
 
 <script setup lang="ts">
-import { Table, TableColumnType, Tag, InputSearch, Button, FormItem, Form } from "ant-design-vue";
+import { computed } from "vue";
+import {
+  Table,
+  TableColumnType,
+  Tag,
+  InputSearch,
+  Button,
+  FormItem,
+  Form,
+  Select,
+} from "ant-design-vue";
 import { onMounted, ref } from "vue";
-import { getBugList, BugRecord } from "./report";
+import { getBugList } from "./report";
+import type { BugRecord } from "@/type";
+const statusOptions = computed(() => [
+  { label: "已完成", value: "resolve" },
+  { label: "已拒绝", value: "reject" },
+  { label: "未处理", value: "pending" },
+]);
+const statusList = ref<string[]>([]);
 import Modal from "./handleModal.vue";
 import Back from "@/components/back.vue";
 const page = ref(1);
@@ -60,6 +86,7 @@ const init = (emailList?: string) => {
     emailList: emailList || "",
     page: page.value,
     amount: amount.value,
+    status: statusList.value.join(","),
   }).then((res) => {
     data.value = res.data;
     total.value = res.total;

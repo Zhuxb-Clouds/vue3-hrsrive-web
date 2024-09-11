@@ -46,7 +46,7 @@
         </FormItem>
 
         <FormItem
-          label="错误类型"
+          label="错误类型/Bug Type"
           name="bugType"
           :rules="[
             {
@@ -60,7 +60,7 @@
             <SelectOption value="program">程序错误</SelectOption>
           </Select>
         </FormItem>
-        <FormItem label="出错行" name="line" v-show="formState.bugType != 'program'">
+        <FormItem label="出错行/Bug Position" name="line" v-show="formState.bugType != 'program'">
           <Input
             placeholder="请输入出错行"
             v-model:value="formState.line"
@@ -69,7 +69,7 @@
           </Input>
         </FormItem>
         <FormItem
-          label="出错内容"
+          label="出错内容/Bug Content"
           name="content"
           :rules="[
             {
@@ -112,7 +112,9 @@ import {
 } from "ant-design-vue";
 import { useLocalStorage } from "@vueuse/core";
 import { useRoute, useRouter } from "vue-router";
-import { FormState, report } from "./report";
+import { report } from "./report";
+import type { FormState } from "@/type";
+
 import Back from "@/components/back.vue";
 const route = useRoute();
 const router = useRouter();
