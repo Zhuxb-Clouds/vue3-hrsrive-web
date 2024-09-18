@@ -36,6 +36,8 @@
 }
 
 /* 删除所有a标签的下划线 */
+/* 删除a标签的蓝色样式 */
 a {
   text-decoration: none;
+  color: inherit;
 }

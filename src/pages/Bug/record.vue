@@ -4,9 +4,9 @@
     <div class="table">
       <Back style="top: 0; left: -50px" />
       <Form layout="inline">
-        <FormItem label="输入其他邮箱查询">
+        <!-- <FormItem label="输入其他邮箱查询">
           <InputSearch type="email" placeholder="请输入邮箱" enter-button @search="handleAddMail" />
-        </FormItem>
+        </FormItem> -->
         <FormItem label="选择需要查询的邮箱">
           <Select
             :options="emailListOptions"
