@@ -1,8 +1,8 @@
 import type { FormState, BugRecord } from '@/type'
 
 
-const baseUrl = 'http://localhost:3011'
-// const baseUrl = 'https://report.zhuxb.cn'
+// const baseUrl = 'http://localhost:3011'
+const baseUrl = 'https://hrsrive.cn/api'
 
 const auth = localStorage.getItem('auth') || ""
 

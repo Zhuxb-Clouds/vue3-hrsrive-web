@@ -1,12 +1,12 @@
 {
   "the-roc": {
-    "headImage": "https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/hrsrive/TheRoc.png",
+    "headImage": "https://oss.hrsrive.cn/hrsrive/TheRoc.png",
     "description": "因为父母工作缘故，吴胜幽从家乡被迫来到大城市的高中读书。喜好诗歌的他内心细腻敏感，始终感觉自己与周遭的同学格格不入。班长魏红杉带他参观学校途中，他遇见了在假山上看书的周清。随后几日，吴胜幽见识到了周清的特立独行，并因此对这个女孩产生了极大的好奇心。\n随着与她接触的增多，二人越走越近，他好像成了周清唯一的朋友。然而实际上，他又似乎一点都不了解周清真实的内心想法……",
     "CGList": [
-      "https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/hrsrive/cg00.png",
-      "https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/hrsrive/cg04.png",
-      "https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/hrsrive/cg11.png",
-      "https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/hrsrive/CG06.png"
+      "https://oss.hrsrive.cn/hrsrive/cg00.png",
+      "https://oss.hrsrive.cn/hrsrive/cg04.png",
+      "https://oss.hrsrive.cn/hrsrive/cg11.png",
+      "https://oss.hrsrive.cn/hrsrive/CG06.png"
     ],
     "musicUrl": "//player.bilibili.com/player.html?isOutside=true&aid=1055132376&bvid=BV1nn4y1R7dL&cid=1561392331&p=1&high_quality=1",
     "steamUrl": "https://store.steampowered.com/widget/1389900/"

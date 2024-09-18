@@ -1,0 +1,26 @@
+name: dev-ci
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy_ghpages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 18.12.0
+      - name: build static page
+        run: |
+          npm install # 安装依赖
+          npm run build # 打包前端代码到生产环境
+      - name: deploy
+        uses: cross-the-world/scp-pipeline@master
+        with:
+          host: ${{ secrets.MY_HOST }} # 服务器IP（需要在GitHub上自行配置对应的secret）
+          user: ${{ secrets.MY_USER }} # 服务器用户名
+          pass: ${{ secrets.MY_PASS }} # 服务器密码
+          connect_timeout: 10s
+          local: "./dist/*" # 源路径（工作流）
+          remote: /var/www/vue3-hrsrive-web # 目标路径（服务器）

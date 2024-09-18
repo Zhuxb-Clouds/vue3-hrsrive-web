@@ -171,7 +171,7 @@ onMounted(() => {
 .container {
   width: 100%;
   height: 100vh;
-  background: url(https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/hrsrive/background.png) no-repeat
+  background: url(https://oss.hrsrive.cn/hrsrive/background.png) no-repeat
     center center;
   background-size: cover;
   display: flex;

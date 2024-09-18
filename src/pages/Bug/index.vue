@@ -11,7 +11,7 @@
             <p>提交漏洞让我们来修复它们。</p>
             <p>为游戏提供更多的建议。</p>
 
-            <img src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/hrsrive/B1.png" alt="" />
+            <img src="https://oss.hrsrive.cn/hrsrive/B1.png" alt="" />
           </section>
         </div>
       </router-link>
@@ -23,7 +23,7 @@
             <p>查看自己的捉虫记录。</p>
             <p class="delete">查看自己的捉虫排名。</p>
 
-            <img src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/hrsrive/A1.png" alt="" />
+            <img src="https://oss.hrsrive.cn/hrsrive/A1.png" alt="" />
           </section>
         </div>
       </router-link>
@@ -76,7 +76,7 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url(https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/hrsrive/background.png) no-repeat
+  background: url(https://oss.hrsrive.cn/hrsrive/background.png) no-repeat
     center center;
   background-size: cover;
 }

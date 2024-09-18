@@ -7,7 +7,7 @@
         <router-link to="/game/the-roc" target="_blank">
           <img
             class="main"
-            src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/hrsrive/TheRoc.png"
+            src="https://oss.hrsrive.cn/hrsrive/TheRoc.png"
             loading="lazy"
             alt=""
           />
@@ -33,7 +33,7 @@
       </div>
       <div class="game-project">
         <img
-          src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/hrsrive/Ashe.webp"
+          src="https://oss.hrsrive.cn/hrsrive/Ashe.webp"
           loading="lazy"
           alt=""
         />
@@ -61,7 +61,7 @@
 .full-screen {
   width: 100%;
   height: 100vh;
-  background: url(https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/hrsrive/background.png) no-repeat
+  background: url(https://oss.hrsrive.cn/hrsrive/background.png) no-repeat
     center center;
   background-size: cover;
   position: relative;

@@ -1,12 +1,12 @@
 <template>
   <header :class="isScrolled ? 'scrolled' : ''">
     <router-link to="/">
-      <img id="logo" src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/hrsrive/logo.png" alt="" />
+      <img id="logo" src="https://oss.hrsrive.cn/hrsrive/logo.png" alt="" />
     </router-link>
     <nav>
       <router-link to="/bug">
         <img
-          src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/hrsrive/bug.png"
+          src="https://oss.hrsrive.cn/hrsrive/bug.png"
           alt=""
           style="filter: invert();"
         />
@@ -14,14 +14,14 @@
       <a href="https://weibo.com/u/7468928516" target="_blank">
         <img
           id="weibo"
-          src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/hrsrive/weibo.png"
+          src="https://oss.hrsrive.cn/hrsrive/weibo.png"
           alt=""
         />
       </a>
       <a href="https://space.bilibili.com/490145207" target="_blank">
         <img
           id="bilibili"
-          src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/hrsrive/bilibili.png"
+          src="https://oss.hrsrive.cn/hrsrive/bilibili.png"
           alt=""
         />
       </a>
