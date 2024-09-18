@@ -22,17 +22,17 @@ const routes = [
   {
     path: "/bug/report",
     name: "Report",
-    component: () => import('@/pages/Bug/Report.vue'),
+    component: () => import('@/pages/Bug/report.vue'),
   },
   {
     path: "/bug/record",
     name: "Record",
-    component: () => import('@/pages/Bug/Record.vue'),
+    component: () => import('@/pages/Bug/record.vue'),
   },
   {
     path: "/bug/handle",
     name: "Handle",
-    component: () => import('@/pages/Bug/Handle.vue'),
+    component: () => import('@/pages/Bug/handle.vue'),
   },
   // 未命中的全部redirect到/
   {
