@@ -11,8 +11,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=Noto+Serif+SC:wght@200..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
     rel="stylesheet" />
-  <link rel="icon" type="image/x-icon" href="https://oss.hrsrive.cn/hrsrive/icon.ico"
-    ref="shortcut icon" />
+  <link rel="icon" type="image/x-icon" href="https://oss.hrsrive.cn/hrsrive/icon.ico" ref="shortcut icon" />
   <title>折扶桑 - 游戏制作组</title>
 </head>
 
@@ -28,5 +27,16 @@
     margin: 0;
   }
 </style>
+
+<script>
+  new PerformanceObserver((entryList) => {
+    const paintEntries = entryList.getEntriesByType('paint');
+    paintEntries.forEach((entry) => {
+      if (entry.name === 'first-contentful-paint') {
+        console.log('白屏时间 (first-contentful-paint):', entry.startTime, '毫秒');
+      }
+    });
+  }).observe({ type: 'paint', buffered: true });
+</script>
 
 </html>
