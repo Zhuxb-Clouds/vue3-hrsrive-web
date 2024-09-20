@@ -40,4 +40,11 @@
 a {
   text-decoration: none;
   color: inherit;
+  cursor: url(@/assets/pointer.webp), auto;
+}
+
+/* 默认鼠标样式 */
+
+body {
+  cursor: url(@/assets/mouse.webp), auto;
 }

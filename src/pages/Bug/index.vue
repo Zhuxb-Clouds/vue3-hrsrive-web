@@ -76,8 +76,7 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url(https://oss.hrsrive.cn/hrsrive/background.png) no-repeat
-    center center;
+  background: url(https://oss.hrsrive.cn/hrsrive/background.png) no-repeat center center;
   background-size: cover;
 }
 .card {
@@ -85,7 +84,7 @@ onMounted(() => {
   height: 480px;
   background-color: #f0f0f0;
   border-radius: 20px;
-  cursor: pointer;
+  cursor: url(@/assets/pointer.webp), pointer;
   padding: 40px;
   font-family: Smiley sans;
   position: relative;
