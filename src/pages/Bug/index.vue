@@ -99,12 +99,11 @@ onMounted(() => {
     padding: 10px 0;
   }
   p {
-    font-size: 1.5rem;
+    font-size: 20px;
     color: #000;
     text-align: left;
-    font-weight: normal;
-    /* 斜体 */
-    font-style: italic;
+    font-weight: 600;
+    font-family: "Noto Sans SC";
     margin-inline-start: 20px;
     position: relative;
     &::before {
