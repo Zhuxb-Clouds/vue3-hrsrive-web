@@ -90,8 +90,8 @@
         </FormItem>
       </Form>
       <p class="tip">
-        如果有更复杂甚至影响游戏正常游玩的Bug<br />
-        请直接联系邮箱：ZhuxbClouds@gmail.com<br />
+        如果有比较复杂无法用文字说明、或是影响游戏正常游玩的Bug<br />
+        请<b>直接联系</b>邮箱：<span class="mail">ZhuxbClouds@gmail.com</span><br />
         我们会第一时间处理
       </p>
     </div>
@@ -198,10 +198,19 @@ onMounted(() => {
   z-index: 1;
 }
 .tip {
-  font-size: 12px;
+  font-size: 16px;
   color: #999;
   text-align: center;
   margin-top: 20px;
+  b{
+    font-weight: 400;
+    color: #2c2c2c;
+    margin-inline: 4px;
+  }
+  .mail{
+    font-style: normal;
+    color: #000;
+  }
 }
 
 @media (max-width: 768px) {
