@@ -43,9 +43,12 @@
 import { ref, computed, Ref } from "vue";
 import InfoMap from "./info.json";
 import { useRoute } from "vue-router";
+import { useTitle } from "@vueuse/core";
+const title = useTitle();
 const route = useRoute();
 const gameName = computed(() => route.params.name) as Ref<keyof typeof InfoMap>;
 const info = computed(() => InfoMap[gameName.value]);
+title.value = `${info.value.title} - 折扶桑制作组`;
 </script>
 
 <style scoped lang="less">
