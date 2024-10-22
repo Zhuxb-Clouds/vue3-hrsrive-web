@@ -42,22 +42,40 @@
             <Tag v-else-if="text == 'reject'" color="error">已拒绝</Tag>
             <Tag v-else-if="text == 'pending'" color="processing">未处理</Tag>
           </div>
+          <div v-if="column.dataIndex == 'operation'">
+            <Button @click="handleOpen(record)">查看</Button>
+          </div>
         </template>
       </Table>
     </div>
   </div>
+  <RecordModal v-model:open="open" :data="bugData" />
 </template>
 
 <script setup lang="ts">
-import { Table, TableColumnType, Tag, InputSearch, Select, FormItem, Form } from "ant-design-vue";
+import { Table, TableColumnType, Tag, Select, FormItem, Form, Button } from "ant-design-vue";
 import { onMounted, ref, computed } from "vue";
 import { getBugList } from "./report";
 import { useLocalStorage } from "@vueuse/core";
 import Back from "@/components/back.vue";
+import RecordModal from "./recordModal.vue";
+import type { BugRecord } from "@/type";
 const emailList = useLocalStorage<string[]>("emailList", []);
 const selectedEmail = ref(emailList.value);
 const page = ref(1);
 const amount = ref(10);
+const open = ref(false);
+const bugData = ref<BugRecord>({
+  game: "",
+  version: "",
+  bugType: "",
+  line: "",
+  content: "",
+  status: "",
+  reply: "",
+  id: 0,
+  email: "",
+});
 const emailListOptions = computed(() =>
   emailList.value.map((item) => ({ label: item, value: item }))
 );
@@ -111,16 +129,20 @@ const columns: TableColumnType[] = [
     dataIndex: "reply",
     ellipsis: true,
   },
+  // 操作：查看详情
+  {
+    title: "操作",
+    dataIndex: "operation",
+  },
 ];
 const handleChange = (pageNumber: number, pageSize: number) => {
   page.value = pageNumber;
   amount.value = pageSize;
   init();
 };
-const handleAddMail = (value: string) => {
-  emailList.value = Array.from(new Set([...emailList.value, value]));
-  selectedEmail.value = [value];
-  init();
+const handleOpen = (data: any) => {
+  bugData.value = data;
+  open.value = true;
 };
 onMounted(async () => {
   init();
@@ -131,8 +153,7 @@ onMounted(async () => {
 .container {
   width: 100%;
   min-height: 100vh;
-  background: url(https://oss.hrsrive.cn/hrsrive/background.png) no-repeat
-    center center;
+  background: url(https://oss.hrsrive.cn/hrsrive/background.png) no-repeat center center;
   background-size: cover;
   display: flex;
   justify-content: center;
