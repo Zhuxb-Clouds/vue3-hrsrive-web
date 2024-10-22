@@ -12,7 +12,6 @@
             {
               required: true,
               message: '请输入您的邮箱，如果不填写邮箱，将无法追踪Bug的处理进度。',
-              type: 'email',
             },
           ]"
         >
@@ -119,6 +118,7 @@ import Back from "@/components/back.vue";
 const route = useRoute();
 const router = useRouter();
 const emailList = useLocalStorage<string[]>("emailList", []);
+const email = useLocalStorage<string>("email", "");
 const formRef = ref();
 const readOnly = ref<string[]>([]);
 const formState = reactive<FormState>({
@@ -132,7 +132,7 @@ const formState = reactive<FormState>({
 
 const onCheck = async () => {
   formRef.value.validateFields().then((res: FormState) => {
-    localStorage.setItem("email", res.email);
+    email.value = res.email;
     if (!emailList.value.includes(res.email)) {
       emailList.value = Array.from(new Set([...emailList.value, res.email]));
     }
@@ -156,9 +156,8 @@ const init = () => {
     formState.line = route.query.line as string;
     readOnly.value.push("line");
   }
-  const email = localStorage.getItem("email");
-  if (email) {
-    formState.email = email;
+  if (email.value) {
+    formState.email = email.value;
   }
 };
 
@@ -171,8 +170,7 @@ onMounted(() => {
 .container {
   width: 100%;
   height: 100vh;
-  background: url(https://oss.hrsrive.cn/hrsrive/background.png) no-repeat
-    center center;
+  background: url(https://oss.hrsrive.cn/hrsrive/background.png) no-repeat center center;
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -202,12 +200,12 @@ onMounted(() => {
   color: #999;
   text-align: center;
   margin-top: 20px;
-  b{
+  b {
     font-weight: 400;
     color: #2c2c2c;
     margin-inline: 4px;
   }
-  .mail{
+  .mail {
     font-style: normal;
     color: #000;
   }
